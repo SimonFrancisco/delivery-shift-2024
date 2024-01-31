@@ -39,7 +39,7 @@ class DeliveryCalculateViewModel : ViewModel() {
             }
             catch (e:Exception){
                 _responseTypes.value = "Error: ${e.message}"
-                _deliveryTypes.value = ArrayList()
+                _deliveryTypes.value = emptyList()
             }
         }
     }
@@ -53,7 +53,7 @@ class DeliveryCalculateViewModel : ViewModel() {
             }
             catch (e:Exception){
                 _responsePoints.value = "Error: ${e.message}"
-                _deliveryPoint.value = ArrayList()
+                _deliveryPoint.value = emptyList()
             }
         }
     }
