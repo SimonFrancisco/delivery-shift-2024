@@ -1,30 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
+
     <data>
         <variable
             name="viewModel"
             type="com.example.mydeliveryapp.deliverycalculate.DeliveryCalculateViewModel" />
     </data>
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".deliverycalculate.DeliveryCalculate">
-        <TextView
-            android:id="@+id/responsePoint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:text="@{viewModel.responsePoints}" />
-        <TextView
-            android:layout_centerHorizontal="true"
-            android:id="@+id/responseType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/responsePoint"
-            android:text="@{viewModel.responseTypes}" />
-    </RelativeLayout>
+        tools:context=".deliverycalculate.DeliveryCalculate"
+        android:background="@color/dark_blue"
+        >
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardUseCompatPadding="true"
+        android:layout_marginTop="100dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            >
+            <TextView
+                android:id="@+id/responsePoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="@{viewModel.responsePoints}" />
+            <TextView
+                android:id="@+id/responseType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/responsePoint"
+                android:layout_centerHorizontal="true"
+                android:text="@{viewModel.responseTypes}" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </layout>
