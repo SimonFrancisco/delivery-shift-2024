@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mydeliveryapp.networkdelivery.CalculateBody
 import com.example.mydeliveryapp.networkdelivery.DeliveryApi
+import com.example.mydeliveryapp.networkdelivery.DeliveryCalculateList
 import com.example.mydeliveryapp.networkdelivery.DeliveryPoints
 import com.example.mydeliveryapp.networkdelivery.DeliveryTypes
 import kotlinx.coroutines.launch
@@ -17,6 +19,10 @@ class DeliveryCalculateViewModel : ViewModel() {
     val responseTypes:LiveData<String>
         get() = _responseTypes
 
+    private val _responseCalculate = MutableLiveData<String>()
+    val responseCalculate:LiveData<String>
+        get() = _responseCalculate
+
     private val _deliveryPoint = MutableLiveData<List<DeliveryPoints>>()
     val deliveryPoints:LiveData<List<DeliveryPoints>>
         get() = _deliveryPoint
@@ -25,9 +31,28 @@ class DeliveryCalculateViewModel : ViewModel() {
     val deliveryTypes:LiveData<List<DeliveryTypes>>
         get() = _deliveryTypes
 
+    private val _deliveryCalculate = MutableLiveData<List<DeliveryCalculateList>>()
+
+    val deliveryCalculate:LiveData<List<DeliveryCalculateList>>
+        get() = _deliveryCalculate
+
     init {
         getDeliveryPoints()
         getDeliveryTypes()
+    }
+
+    private fun getDeliveryCalculate(calculateBody: CalculateBody) {
+        viewModelScope.launch {
+            try {
+                val listResult = DeliveryApi.retrofitService.getCalculation(calculateBody)
+                _deliveryCalculate.value = listOf(listResult)
+                _responseCalculate.value = "Success: ${listResult.options.size} Price"
+            }
+            catch (e:Exception){
+                _responseCalculate.value = "Error: ${e.message}"
+                _deliveryCalculate.value = emptyList()
+            }
+        }
     }
 
     private fun getDeliveryTypes() {
