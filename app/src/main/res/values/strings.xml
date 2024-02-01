@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyDeliveryApp</string>
+    <string name="calculatedelivery">Рассчитать доставку</string>
+    <string name="whereTo">Город назначения</string>
+    <string name="whereFrom">Город отправки</string>
+    <string name="itemType">Размер посылки</string>
+    <string name="CalculateButton">Рассчитаь</string>
 </resources>

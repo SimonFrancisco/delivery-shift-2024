@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/deliveryCalculate"
         android:name="com.example.mydeliveryapp.deliverycalculate.DeliveryCalculate"
-        android:label="Calculate"
+        android:label="Расчёт"
         tools:layout="@layout/fragment_delivery_calculate" />
 </navigation>
