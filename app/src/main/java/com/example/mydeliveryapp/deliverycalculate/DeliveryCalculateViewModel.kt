@@ -41,12 +41,13 @@ class DeliveryCalculateViewModel : ViewModel() {
         getDeliveryTypes()
     }
 
-    private fun getDeliveryCalculate(calculateBody: CalculateBody) {
+
+    fun getDeliveryCalculate(calculateBody: CalculateBody) {
         viewModelScope.launch {
             try {
                 val listResult = DeliveryApi.retrofitService.getCalculation(calculateBody)
                 _deliveryCalculate.value = listOf(listResult)
-                _responseCalculate.value = "Success: ${listResult.options.size} Price"
+                _responseCalculate.value = "Success: ${listResult.options[0].price}"
             }
             catch (e:Exception){
                 _responseCalculate.value = "Error: ${e.message}"
