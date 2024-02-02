@@ -1,13 +1,15 @@
 package com.example.mydeliveryapp.networkdelivery
 
+import com.squareup.moshi.Json
+
 data class CalculateBody(
-    val packageDetails: PackageDetails,
-    val receiverPoint: ReceiverPoint,
-    val senderPoint: SenderPoint
+    @Json(name = "package")val packageDetails: Package,
+    val senderPoint: SenderPoint,
+    val receiverPoint: ReceiverPoint
 )
-data class PackageDetails (
-    val height: String,
+data class Package (
     val length: String,
+    val height: String,
     val weight: String,
     val width: String
 )

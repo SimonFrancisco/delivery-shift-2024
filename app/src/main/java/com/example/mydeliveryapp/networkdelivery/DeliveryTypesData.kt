@@ -7,12 +7,12 @@ import java.io.Serializable
 
 @Parcelize
 data class DeliveryTypes(
-    val packages: @RawValue List<Package>,
+    val packages: @RawValue List<PackageType>,
     val success: Boolean
 ) : Parcelable, Serializable
 
 @Parcelize
-data class Package(
+data class PackageType(
     val height: Int,
     val id: String,
     val length: Int,

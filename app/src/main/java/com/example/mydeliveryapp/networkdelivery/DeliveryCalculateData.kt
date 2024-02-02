@@ -6,9 +6,9 @@ import kotlinx.parcelize.RawValue
 import java.io.Serializable
 @Parcelize
 data class DeliveryCalculateList(
-    val options:@RawValue List<Option>,
+    val options: List<Option>,
     val success: Boolean
-):Parcelable,Serializable
+):Parcelable
 @Parcelize
 data class Option(
     val days: Int,

@@ -8,6 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 private const val BASE_URL = "https://shift-backend.onrender.com/"
@@ -27,7 +28,7 @@ interface DeliveryApiService {
     suspend fun getTypes(): DeliveryTypes
     @POST("delivery/calc")
     suspend fun getCalculation(
-       @Body calculateBody: CalculateBody
+       @Body calculateBody:CalculateBody
     ):DeliveryCalculateList
 
 }

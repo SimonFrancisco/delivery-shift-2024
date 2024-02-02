@@ -9,5 +9,18 @@
         android:id="@+id/deliveryCalculate"
         android:name="com.example.mydeliveryapp.deliverycalculate.DeliveryCalculate"
         android:label="Расчёт"
-        tools:layout="@layout/fragment_delivery_calculate" />
+        tools:layout="@layout/fragment_delivery_calculate" >
+        <action
+            android:id="@+id/action_deliveryCalculate_to_sendOption"
+            app:destination="@id/sendOption" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendOption"
+        android:name="com.example.mydeliveryapp.sendingoption.SendOption"
+        android:label="Способ отправки"
+        tools:layout="@layout/fragment_send_option" >
+        <argument
+            android:name="calculatePay"
+            app:argType="com.example.mydeliveryapp.networkdelivery.DeliveryCalculateList" />
+    </fragment>
 </navigation>
